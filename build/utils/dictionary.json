@@ -1,0 +1,65 @@
+{
+    "USERS": {
+        "ERROR": {
+            "CREATE": {
+                "DUPLICATE": "Duplicate user found."
+            },
+            "READ": {
+                "NOT_FOUND": "User not found."
+            }
+        }
+    },
+    "ORGS": {
+        "ERROR": {
+            "UPDATE": {
+                "NOT_FOUND": "Organization not found."
+            },
+            "DELETE": {
+                "NOT_FOUND": "Organization not found."
+            },
+            "READ": {
+                "NOT_FOUND": "Organization not found."
+            }
+        }
+    },
+    "NONCE": {
+        "ERROR": {
+            "UPDATE": {
+                "NOT_FOUND": "Nonce not found."
+            },
+            "DELETE": {
+                "NOT_FOUND": "Nonce not found."
+            },
+            "READ": {
+                "NOT_FOUND": "Nonce not found."
+            }
+        }
+    },
+    "ORG_FORMS": {
+        "ERROR": {
+            "UPDATE": {
+                "NOT_FOUND": "Form not found."
+            },
+            "DELETE": {
+                "NOT_FOUND": "Form not found."
+            },
+            "READ": {
+                "NOT_FOUND": "Form not found."
+            }
+        }
+    },
+    "ORG_MEMBERS": {
+        "ERROR": {
+            "READ": {
+                "NOT_FOUND": "Member not found."
+            }
+        }
+    },
+    "ORG_HOOKS": {
+        "ERROR": {
+            "READ": {
+                "NOT_FOUND": "Hook not found."
+            }
+        }
+    }
+}

@@ -1,0 +1,87 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id        String    @id @default(uuid())
+  username  String
+  email     String    @unique
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @default(now())
+  UserOrg   UserOrg[]
+}
+
+model UserOrg {
+  User   User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String
+  Org    Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  orgId  String
+  role   String
+
+  @@id([userId, orgId])
+}
+
+model Organization {
+  id        String      @id @default(uuid())
+  name      String
+  apiKey    String?
+  secretKey String?
+  public    Boolean     @default(false)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @default(now())
+  UserOrg   UserOrg[]
+  OrgMember OrgMember[]
+  OrgHook   OrgHook[]
+  OrgForm   OrgForm[]
+}
+
+model OrgMember {
+  id            String       @id @default(uuid())
+  Org           Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  orgId         String
+  name          String?
+  walletAddress String
+  validated     DateTime?
+  nonce         String?
+  nonceDate     DateTime?
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @default(now())
+}
+
+model OrgHook {
+  id        String       @id @default(uuid())
+  Org       Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  orgId     String
+  name      String
+  method    String
+  url       String
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @default(now())
+}
+
+model OrgForm {
+  id        String       @id @default(uuid())
+  Org       Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  orgId     String
+  name      String
+  enabled   Boolean      @default(false)
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @default(now())
+  Nonce     Nonce[]
+}
+
+model Nonce {
+  id        String   @id @default(uuid())
+  nonce     String
+  OrgForm   OrgForm  @relation(fields: [orgFormId], references: [id], onDelete: Cascade)
+  orgFormId String
+  createdAt DateTime @default(now())
+}
