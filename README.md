@@ -1,11 +1,18 @@
 # Shadow API
 
-The main API for the Shadow team.
+The main API for the Shadow team, made for the
+[web3con](https://www.web3con.dev) hackathon. See the main application that
+works with this API or build your own UI on top of this.
+
+Shadow App:
+
+[https://github.com/codingwithmanny/project-shadow-app](https://github.com/codingwithmanny/project-shadow-app)
 
 ## Requirements
 
 - NodeJS 16.14.0 or NVM
 - Yarn 1.22.17
+- Docker 20.10.11
 
 ## Local Setup
 
@@ -106,3 +113,8 @@ yarn test:coverage; # npm run test:coverage;
 ```bash
 yarn test:lint; # npm run test:lint
 ```
+
+## Contributors
+
+- [codingwithmanny](https://github.com/codingwithmanny)
+- [RazorSiM](https://github.com/RazorSiM)
